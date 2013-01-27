@@ -1,0 +1,39 @@
+<idea-plugin>
+  <name>SvgViewer 2</name>
+  <description><![CDATA[
+    An updated version of the SVG Viewer plugin originally released by Andrew Armstrong back in 2004 (I attempted
+    to contact him but his listed email address is no longer valid)  This release works with the current versions
+    of the Intellij platform and runs in Intellij and WebStorm. It seems to have trouble in AppCode due to a missing
+    Batik dependency.  However I was unable to find a 'depends' node in the plugin.xml file that indicated it works
+    with all Intellij platforms except AppCode so I simply left it out, indicating it works for Intellij only.
+    ]]>
+  </description>
+  <version>2.0</version>
+  <vendor email="billdwhite@gmail.com">Bill White</vendor>
+  <change-notes><![CDATA[
+    <ul>
+      <li>2.0 - first release</li>
+    </ul>
+    ]]>
+  </change-notes>
+  <idea-version since-build="111.0001" />
+  <project-components>
+    <component>
+      <implementation-class>org.ideaplugins.svgviewer.controller.project.SvgViewerProjectComponent</implementation-class>
+    </component>
+  </project-components>
+  <application-components>
+    <component>
+      <implementation-class>org.ideaplugins.svgviewer.controller.application.Configuration</implementation-class>
+    </component>
+  </application-components>
+  <actions>
+    <action id="ViewSVG"
+            class="org.ideaplugins.svgviewer.controller.actions.SVGViewerAction"
+            text="View Image"
+            icon="/org/ideaplugins/svgviewer/resources/SvgViewerToolWindow.png"
+            description="Display SVG or image file.">
+      <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
+    </action>
+  </actions>
+</idea-plugin>
