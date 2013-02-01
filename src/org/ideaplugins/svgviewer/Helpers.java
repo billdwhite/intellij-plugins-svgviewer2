@@ -12,7 +12,7 @@ import java.net.URL;
 public class Helpers {
 
 
-    public static final String ICON_TOOL_WINDOW = "/org/ideaplugins/svgviewer/resources/SvgViewerToolWindow.png";
+    public static final String ICON_TOOL_WINDOW = "/org/ideaplugins/svgviewer/resources/SvgViewerToolWindow13x13.png";
     private static final Icon DEFAULT_ICON = getDefaultIcon();
 
 
