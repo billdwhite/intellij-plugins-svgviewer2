@@ -20,6 +20,7 @@ implements Runnable {
     private static final String ICON_REFRESH = "/actions/sync.png";
     private static final String ICON_PAUSE = "/actions/pause.png";
     private static final String ICON_STOP = "/actions/suspend.png";
+    private static final String ICON_BACKGROUND = "/runConfigurations/trackTests.png";
     private JLabel _status = new JLabel();
     private UserAgentListModel _model = new UserAgentListModel();
     private JBList _messages = new JBList(this._model);
@@ -28,6 +29,7 @@ implements Runnable {
     private boolean _paused = false;
     private boolean _pauseEnabled = false;
     private boolean _stopEnabled = false;
+    private boolean _backgroundEnabled = true;
 
 
 
@@ -47,6 +49,8 @@ implements Runnable {
         actionGroup.add(new RefreshAction());
         actionGroup.add(new PauseAction());
         actionGroup.add(new StopAction());
+        actionGroup.add(Separator.getInstance());
+        actionGroup.add(new BackgroundAction());
         actionGroup.add(Separator.getInstance());
         ActionToolbar toolBar = getToolBar(actionGroup);
         JPanel controlBar = new JPanel(new FlowLayout(FlowLayout.LEFT, 1, 0));
@@ -146,6 +150,15 @@ implements Runnable {
     }
 
 
+    public boolean isBackgroundEnabled() {
+        return this._backgroundEnabled;
+    }
+
+
+    public void setBackgroundEnabled(boolean backgroundEnabled) {
+        this._backgroundEnabled = backgroundEnabled;
+    }
+
 
     private class StopAction
     extends AnAction {
@@ -242,5 +255,30 @@ implements Runnable {
         public RefreshAction() {
             super(RefreshAction.RELOAD_TOOL_TIP, RefreshAction.RELOAD_DESCRIPTION, IconLoader.getIcon(SvgViewerPanel.ICON_REFRESH));
         }
+    }
+
+
+
+    private class BackgroundAction
+    extends AnAction {
+
+        private static final String BACKGROUND_TOOL_TIP = "Change Background Visibility";
+        private static final String BACKGROUND_DESCRIPTION = "Change background to get better visibility of light or dark images";
+
+
+        public void actionPerformed(AnActionEvent event) {
+            SvgViewerPanel.this._canvas.toggleBackgroundColor();
+        }
+
+
+        public void update(AnActionEvent event) {
+            event.getPresentation().setEnabled(SvgViewerPanel.this.isBackgroundEnabled());
+        }
+
+
+        public BackgroundAction() {
+            super(BackgroundAction.BACKGROUND_TOOL_TIP, BackgroundAction.BACKGROUND_DESCRIPTION, IconLoader.getIcon(SvgViewerPanel.ICON_BACKGROUND));
+        }
+
     }
 }

@@ -16,23 +16,30 @@ import java.io.IOException;
 public class SvgViewerCanvas
 extends JSVGCanvas {
 
-
     private static final Logger LOG = Logger.getInstance(SvgViewerCanvas.class.getName());
+    private static final int BACKGROUND_LIGHT  = 1;
+    private static final int BACKGROUND_MEDIUM = 2;
+    private static final int BACKGROUND_DARK   = 3;
+    private static final Color COLOR_LIGHT  = Color.decode("#F3F3F3");
+    private static final Color COLOR_MEDIUM = Color.LIGHT_GRAY;
+    private static final Color COLOR_DARK   = Color.DARK_GRAY;
+
     private VirtualFile _file;
     private ToolWindow _toolWindow;
     private SvgViewerPanel _viewer;
     private SvgImageDocument _svgImageDoc;
-
+    private int _currentBackground;
+    private Color _currentBackgroundColor;
 
 
     public SvgViewerCanvas(SvgViewerPanel viewer, UserAgent useragent) {
         super(useragent, true, true);
+        this.toggleBackgroundColor();
         this._viewer = viewer;
         String parser = XMLResourceDescriptor.getXMLParserClassName();
         this._svgImageDoc = new SvgImageDocument(new SAXSVGDocumentFactory(parser));
         addListeners();
     }
-
 
 
     private void addListeners() {
@@ -46,11 +53,9 @@ extends JSVGCanvas {
     }
 
 
-
     public void setToolWindow(ToolWindow toolWindow) {
         this._toolWindow = toolWindow;
     }
-
 
 
     public void setFile(VirtualFile file) {
@@ -64,7 +69,6 @@ extends JSVGCanvas {
     }
 
 
-
     public void updateTitle() {
         if ((getSVGDocument() == null) || (getSVGDocument().getTitle().trim().length() == 0)) {
             this._toolWindow.setTitle("[" + this._file.getName() + "]");
@@ -73,7 +77,6 @@ extends JSVGCanvas {
             this._toolWindow.setTitle("[" + this._file.getName() + "] - " + getSVGDocument().getTitle());
         }
     }
-
 
 
     public void showSelectedFile() {
@@ -102,11 +105,29 @@ extends JSVGCanvas {
     }
 
 
-
     public void refresh() {
         setSVGDocument(getSVGDocument());
     }
 
+
+    public void toggleBackgroundColor() {
+        switch (this._currentBackground) {
+            case BACKGROUND_LIGHT:
+                this._currentBackground = BACKGROUND_MEDIUM;
+                this._currentBackgroundColor = COLOR_MEDIUM;
+                break;
+            case BACKGROUND_MEDIUM:
+                this._currentBackground = BACKGROUND_DARK;
+                this._currentBackgroundColor = COLOR_DARK;
+                break;
+            case BACKGROUND_DARK:
+            default:
+                this._currentBackground = BACKGROUND_LIGHT;
+                this._currentBackgroundColor = COLOR_LIGHT;
+                break;
+        }
+        this.setBackground(this._currentBackgroundColor);
+    }
 
 
     protected boolean computeRenderingTransform() {

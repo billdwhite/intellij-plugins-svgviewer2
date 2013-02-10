@@ -70,6 +70,11 @@ implements SVGDocumentLoaderListener,
     }
 
 
+    private void enableBackgroundButton(boolean enabled) {
+        this._viewer.setRefreshEnabled(enabled);
+    }
+
+
 
     private void showMessage(String status) {
         this._viewer.setStatus(status);
@@ -90,6 +95,7 @@ implements SVGDocumentLoaderListener,
         enableRefreshButton(false);
         enablePauseButton(false);
         enableStopButton(true);
+        enableBackgroundButton(false);
     }
 
 
@@ -98,6 +104,7 @@ implements SVGDocumentLoaderListener,
         showMessage(SvgEventListener.STATUS_LOAD_CANCELLED);
         enableRefreshButton(true);
         enableStopButton(false);
+        enableBackgroundButton(false);
     }
 
 
@@ -106,6 +113,7 @@ implements SVGDocumentLoaderListener,
         showMessage(SvgEventListener.STATUS_LOAD_FAILED);
         enableRefreshButton(true);
         enableStopButton(false);
+        enableBackgroundButton(false);
     }
 
 
@@ -113,6 +121,7 @@ implements SVGDocumentLoaderListener,
     public void documentLoadingCompleted(SVGDocumentLoaderEvent e) {
         showMessage(SvgEventListener.STATUS_LOAD_COMPLETE, SvgEventListener.STATUS_LOAD_COMPLETE + e.getSVGDocument().getURL());
         this._viewer.getCanvas().updateTitle();
+        enableBackgroundButton(true);
     }
 
 
@@ -120,6 +129,7 @@ implements SVGDocumentLoaderListener,
     public void gvtBuildStarted(GVTTreeBuilderEvent e) {
         showMessage(SvgEventListener.STATUS_BUILDING);
         enableStopButton(true);
+        enableBackgroundButton(false);
     }
 
 
@@ -128,6 +138,7 @@ implements SVGDocumentLoaderListener,
         showMessage(SvgEventListener.STATUS_BUILD_CANCELLED);
         enableRefreshButton(true);
         enableStopButton(false);
+        enableBackgroundButton(false);
     }
 
 
@@ -136,6 +147,7 @@ implements SVGDocumentLoaderListener,
         showMessage(SvgEventListener.STATUS_BUILD_FAILED);
         enableRefreshButton(true);
         enableStopButton(false);
+        enableBackgroundButton(false);
     }
 
 
@@ -225,6 +237,7 @@ implements SVGDocumentLoaderListener,
                 showMessage(SvgEventListener.STATUS_ANIMATION_STARTED);
                 enablePauseButton(true);
                 enableStopButton(true);
+                enableBackgroundButton(false);
             }
         }
     }
@@ -236,6 +249,7 @@ implements SVGDocumentLoaderListener,
             showMessage(SvgEventListener.STATUS_ANIMATION_PAUSED);
             enablePauseButton(true);
             enableStopButton(true);
+            enableBackgroundButton(false);
         }
     }
 
@@ -246,6 +260,7 @@ implements SVGDocumentLoaderListener,
             showMessage(SvgEventListener.STATUS_ANIMATION_RESUMED);
             enablePauseButton(true);
             enableStopButton(true);
+            enableBackgroundButton(false);
         }
     }
 
@@ -261,6 +276,7 @@ implements SVGDocumentLoaderListener,
         showMessage(SvgEventListener.STATUS_UPDATE_FAILED);
         enablePauseButton(false);
         enableStopButton(false);
+        enableBackgroundButton(false);
     }
 
 
@@ -275,6 +291,7 @@ implements SVGDocumentLoaderListener,
             showMessage(SvgEventListener.STATUS_ANIMATION_STOPPED);
             enablePauseButton(false);
             enableStopButton(false);
+            enableBackgroundButton(false);
         }
     }
 
