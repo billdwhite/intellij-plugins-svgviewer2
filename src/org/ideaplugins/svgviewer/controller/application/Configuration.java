@@ -67,7 +67,7 @@ implements ApplicationComponent, JDOMExternalizable, Configurable {
 
 
     public Icon getIcon() {
-        return Helpers.getIcon(Helpers.ICON_TOOL_WINDOW);
+        return Helpers.ICON_TOOL_WINDOW;
     }
 
 
