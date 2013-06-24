@@ -35,7 +35,7 @@ extends JPanel {
 
         JTabbedPane tabbedPane = new JTabbedPane(SwingConstants.TOP);
         tabbedPane.setPreferredSize(new Dimension(400, 600));
-        tabbedPane.insertTab(ConfigurationPanel.ABOUT, Helpers.getIcon(Helpers.ICON_TOOL_WINDOW), new AboutPanel(), null, 0);
+        tabbedPane.insertTab(ConfigurationPanel.ABOUT, Helpers.ICON_TOOL_WINDOW, new AboutPanel(), null, 0);
 
         add(topPane, "North");
         add(tabbedPane, "Center");

@@ -23,7 +23,7 @@
   <idea-version since-build="111.0001" />
   <depends>com.intellij.modules.platform</depends>
   <depends>com.intellij.modules.lang</depends>
-  <depends>com.intellij.css</depends>
+  <depends>com.intellij.modules.ultimate</depends>
   <project-components>
     <component>
       <implementation-class>org.ideaplugins.svgviewer.controller.project.SvgViewerProjectComponent</implementation-class>
