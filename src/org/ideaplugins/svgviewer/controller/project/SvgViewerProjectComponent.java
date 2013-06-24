@@ -67,7 +67,7 @@ implements ProjectComponent {
         ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(this._project);
         ToolWindow toolWindow = toolWindowManager.registerToolWindow(SvgViewerProjectComponent.ID_TOOL_WINDOW, getViewerPanel(), ToolWindowAnchor.RIGHT);
 
-        toolWindow.setIcon(Helpers.getIcon(Helpers.ICON_TOOL_WINDOW));
+        toolWindow.setIcon(Helpers.ICON_TOOL_WINDOW);
         getViewerPanel().getCanvas().setToolWindow(toolWindow);
 
         this._editorListener = new EditorListener(getViewerPanel());
