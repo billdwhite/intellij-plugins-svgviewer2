@@ -14,6 +14,7 @@
   <vendor email="billdwhite@gmail.com">Bill White</vendor>
   <change-notes><![CDATA[
     <ul>
+      <li>2.0.3 - fixes contributed by Vlad Rassokhin; added missing about html page</li>
       <li>2.0.2 - added button to toggle background to allow better visibility of svgs with light colors; adding other web platforms</li>
       <li>2.0.1 - adjusted image size to suppress log warnings</li>
       <li>2.0   - first release</li>

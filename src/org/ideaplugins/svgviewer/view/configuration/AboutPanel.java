@@ -22,7 +22,7 @@ implements HyperlinkListener {
 
 
     private static final Logger LOG = Logger.getInstance(AboutPanel.class.toString());
-    private static final String URL_ABOUT = "/SvgViewer/html/About.html";
+    private static final String URL_ABOUT = "/html/About.html";
     private static final String ICON_BACK = "/actions/back.png";
     private static final String SVGVIEWER_ABOUT_ACTION_GROUP = "SvgViewerAboutActionGroup";
     private static final String SVGVIEWER_ABOUT_ACTION_TOOLBAR = "SvgViewerAboutActionToolbar";
