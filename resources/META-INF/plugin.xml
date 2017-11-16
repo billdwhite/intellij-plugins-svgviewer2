@@ -1,7 +1,7 @@
 <idea-plugin>
-    <id>com.your.company.unique.plugin.id</id>
-    <name>SvgViewer 3</name>
-    <version>3.0</version>
+    <id>SvgViewer 2</id>
+    <name>SvgViewer 2</name>
+    <version>2.1</version>
     <vendor email="billdwhite@gmail.com" url="http://www.billdwhite.com">Bill White</vendor>
 
     <description><![CDATA[
@@ -21,7 +21,7 @@
       <li>2.0.2 - added button to toggle background to allow better visibility of svgs with light colors; adding other web platforms</li>
       <li>2.0.1 - adjusted image size to suppress log warnings</li>
       <li>2.0   - first release</li>
-      <li>3.0   - updated release</li>
+      <li>2.1   - updated release to work with latest intellij ide</li>
     </ul>
     ]]>
     </change-notes>
