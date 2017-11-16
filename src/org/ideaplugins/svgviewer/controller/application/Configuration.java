@@ -6,10 +6,9 @@ import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
-import com.intellij.openapi.util.DefaultJDOMExternalizer;
 import com.intellij.openapi.util.InvalidDataException;
-import com.intellij.openapi.util.JDOMExternalizable;
 import com.intellij.openapi.util.WriteExternalException;
+import com.intellij.util.xmlb.XmlSerializer;
 import org.ideaplugins.svgviewer.Helpers;
 import org.ideaplugins.svgviewer.controller.project.SvgViewerProjectComponent;
 import org.ideaplugins.svgviewer.view.configuration.ConfigurationPanel;
@@ -19,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 
 public class Configuration
-implements ApplicationComponent, JDOMExternalizable, Configurable {
+implements ApplicationComponent, Configurable {
 
 
     private static final String CONFIGURATION_COMPONENT_NAME = "Settings";
@@ -48,14 +47,14 @@ implements ApplicationComponent, JDOMExternalizable, Configurable {
 
     public void readExternal(Element element)
     throws InvalidDataException {
-        DefaultJDOMExternalizer.readExternal(this, element);
+        XmlSerializer.serializeInto(this, element);
     }
 
 
 
     public void writeExternal(Element element)
     throws WriteExternalException {
-        DefaultJDOMExternalizer.writeExternal(this, element);
+        XmlSerializer.deserializeInto(this, element);
     }
 
 

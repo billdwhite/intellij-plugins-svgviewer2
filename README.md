@@ -1,4 +1,4 @@
-intellij-plugins-svgviewer2
+intellij-plugins-svgviewer3
 ===========================
 
 Updated version of SVGViewer Intellij Plugin

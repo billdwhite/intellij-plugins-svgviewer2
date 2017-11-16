@@ -1,11 +1,11 @@
 package org.ideaplugins.svgviewer.controller.project;
 
-import com.intellij.openapi.vfs.VirtualFileAdapter;
 import com.intellij.openapi.vfs.VirtualFileEvent;
+import com.intellij.openapi.vfs.VirtualFileListener;
 import org.ideaplugins.svgviewer.view.SvgViewerPanel;
 
 class FileListener
-extends VirtualFileAdapter {
+implements VirtualFileListener {
 
 
     private SvgViewerPanel _viewer;
